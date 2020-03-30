@@ -1,12 +1,8 @@
 <template>
-  <div>
-    App
-    <hr>
+  <div>  
     <router-view>
       <!-- router-wiew 指定组件显示的位置 -->
-    </router-view>
-    <hr>
-    
+    </router-view>  
   </div>
 </template>
 

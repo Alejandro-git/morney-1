@@ -1,7 +1,7 @@
 
 <template>
     <!-- 这作为一个全局组件 -->
-    <div>
+    <div class="nav">
       <!-- 导航栏 
       vue 提供 router-link-->
       <router-link to="/money">记账</router-link>
@@ -19,5 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .nav{
+        border: 1px solid red;
+    }
 </style>

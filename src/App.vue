@@ -7,6 +7,13 @@
 </template>
 
 <style lang="scss">
+// 这里style不加scoped，
+// 因为scoped有特殊处理，只会渲染一部分
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

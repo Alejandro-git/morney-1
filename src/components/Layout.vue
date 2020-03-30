@@ -1,20 +1,22 @@
 <template>
-<div> 
-    <Layout>
-        <p>Statistics.vue</p>
-    </Layout>
-</div> 
+     <div class="nav-wrapper">
+        <div class="content">
+           <!-- 这里用到vue的插槽 slot标签;
+           这里slot接受三个页面layout标签里面传过来的内容，然后显示-->
+           <slot></slot>
+        </div>
+        <Nav />
+    </div>
 </template>
 
-<script>
-    export default {
-        name: 'Statistics',
-        
-    }
+<script lang="ts">
+    export default({
+        name:'Layout'
+    })
 </script>
 
 <style lang="scss" scoped>
-     .nav-wrapper{
+    .nav-wrapper{
         display: flex;
         border: 1px solid green;
         flex-direction: column;

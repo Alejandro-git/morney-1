@@ -9,10 +9,20 @@
 <style lang="scss">
 // 这里style不加scoped，
 // 因为scoped有特殊处理，只会渲染一部分
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+body{
+  height: 1.5;
+}
+a{
+  text-decoration: none;
+  // 去掉字体自带的下划线
+  color: inherit;
+  //  inherit继承
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

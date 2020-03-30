@@ -25,7 +25,7 @@
         height: 100vh;
     }
     .content{
-        border: 1px solid blue;
+        // border: 1px solid blue;
         overflow:auto;
         //内容太多的话同样会让导航栏看不见，
         //  overflow:auto;让内容可以滚动，展示滚动条。

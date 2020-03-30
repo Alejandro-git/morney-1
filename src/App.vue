@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    App
+    <hr>
+    <router-view>
+      <!-- router-wiew 指定组件显示的位置 -->
+    </router-view>
+    <hr>
+    
   </div>
 </template>
 

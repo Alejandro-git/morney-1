@@ -27,7 +27,7 @@
     }
     .content{
         // border: 1px solid blue;
-        overflow:auto;
+        overflow: auto;
         //内容太多的话同样会让导航栏看不见，
         //  overflow:auto;让内容可以滚动，展示滚动条。
         // 就是蓝色边框里面的内容可以滚动；

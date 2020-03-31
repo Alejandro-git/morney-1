@@ -3,15 +3,15 @@
   <nav>
     <!-- 导航栏 
       vue 提供 router-link-->
-    <router-link to="/money" class="item">
+    <router-link to="/money" class="item" active-class="selected">
       <Icon name="money" />
       记账
     </router-link>
-    <router-link to="/labels" class="item">
+    <router-link to="/labels" class="item" active-class="selected">
       <Icon name="labels" />
       标签
     </router-link>
-    <router-link to="/statistics" class="item">
+    <router-link to="/statistics" class="item" active-class="selected">
       <Icon name="statistics" />
       统计
     </router-link>
@@ -42,6 +42,12 @@ nav {
       width: 32px;
       height: 32px;
     }
+  }
+  > .item.selected{
+      color: #ffbb00;
+    // active-class="selected"显示点击的的那个
+    // 点击后显示红色
+
   }
 }
 </style>

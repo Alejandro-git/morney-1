@@ -25,6 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
 nav {
   // border: 1px solid red;
   display: flex;
@@ -44,7 +45,7 @@ nav {
     }
   }
   > .item.selected{
-      color: #ffbb00;
+      color: $color-highlight;
     // active-class="selected"显示点击的的那个
     // 点击后显示红色
 

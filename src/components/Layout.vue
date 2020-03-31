@@ -1,6 +1,6 @@
 <template>
-     <div class="nav-wrapper">
-        <div class="content">
+     <div class="layout-wrapper" :class="classPrefix && `${classPrefix}-wrapper`">
+        <div class="content" :class="classPrefix && `${classPrefix}-content`">
            <!-- 这里用到vue的插槽 slot标签;
            这里slot接受三个页面layout标签里面传过来的内容，然后显示-->
            <slot></slot>
@@ -10,15 +10,16 @@
 </template>
 
 <script lang="ts">
-    export default({
+    export default {
+        props:['classPrefix'],
         name:'Layout'
-    })
+    }
 </script>
 
 <style lang="scss" scoped>
-    .nav-wrapper{
+    .layout-wrapper{
         display: flex;
-        border: 1px solid green;
+        // border: 1px solid green;
         flex-direction: column;
         // min-height: 100vh;//最小高度100vh，也就是沾满可视高度
         // 考虑如果内容太多导航栏会出现在更下面，所以固定高度更合适height: 100vh；

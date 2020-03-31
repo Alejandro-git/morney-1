@@ -13,11 +13,19 @@
 @import "~@/assets/style/reset.scss";
 @import "~@/assets/style/helper.scss";
 body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   font-family: $font-hei;
+  font-size: 16px;
   height: 1.5;
 }
+// .clearfix::after{
+//   content: '';
+//   display: block;
+//   clear: both;
+//   // clearfix经典写法
+//   // 需要buttons上添加“clearfix”
+// }
+// 这里在helper.scss使用placeholder定义全局变量，
 </style>

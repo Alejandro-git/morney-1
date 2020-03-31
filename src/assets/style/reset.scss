@@ -9,3 +9,16 @@ a {
   color: inherit;
   //  inherit继承
 }
+
+ul,ol{
+    list-style: none;
+}
+
+button,input{
+    font: inherit;
+}
+
+:focus{
+    outline: none;
+    // 取消选中时的外边框
+}

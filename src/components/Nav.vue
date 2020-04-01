@@ -48,7 +48,6 @@ nav {
       color: $color-highlight;
     // active-class="selected"显示点击的的那个
     // 点击后显示红色
-
   }
 }
 </style>

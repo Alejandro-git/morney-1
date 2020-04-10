@@ -54,14 +54,12 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    const record2: RecordItem = JSON.parse(JSON.stringify(this.record));
-    record2.createdAt = new Date();
-    this.recordList.push(record2);
+    recordListModel.create(this.record)
   }
 
   @Watch("recordList")
   onRecordChange() {
-    recordListModel.save(this.recordList);
+    recordListModel.save();
   }
 }
 </script>

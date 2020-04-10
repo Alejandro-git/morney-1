@@ -28,13 +28,13 @@ import recordListModel from "@/models/recordListModel";
 import tagListModel from "@/models/tagListModel";
 
 const recordList = recordListModel.fetch();
-const tsgList = tagListModel.fetch();
+
 
 @Component({
   components: { NumberPad, Types, FromItem, Tags },
 })
 export default class Money extends Vue {
-  tags = tsgList;
+  tags = window.tagList;
 
   recordList: RecordItem[] = JSON.parse(
     window.localStorage.getItem("recordList") || "[]"

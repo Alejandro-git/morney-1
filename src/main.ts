@@ -9,14 +9,18 @@ import Nav from '@/components/Nav.vue'
 // 这里全局引入Nav.vue；“Vue.component('Nav',Nav)”
 import Layout from '@/components/Layout.vue'
 import Icon from '@/components/Icon.vue'
+import tagListModel from './models/tagListModel'
 
 
 
 Vue.config.productionTip = false
 
-Vue.component('Nav',Nav)
-Vue.component('Layout',Layout)
-Vue.component('Icon',Icon)
+Vue.component('Nav', Nav)
+Vue.component('Layout', Layout)
+Vue.component('Icon', Icon)
+
+
+window.tagList = tagListModel.fetch()
 
 new Vue({
   router: router,

@@ -12,7 +12,8 @@
           placeholder="在这里输入备注"
         />
       </div>
-      <Tags :data-source.sync="tags" @update:value="onUpdateTags" />
+      <Tags />
+
     </Layout>
   </div>
 </template>
@@ -24,23 +25,22 @@ import Types from "@/components/Money/Types.vue";
 import FromItem from "@/components/Money/FromItem.vue";
 import Tags from "@/components/Money/Tags.vue";
 import { Component } from "vue-property-decorator";
-import store from '@/store/index2.ts';
-
-
+import oldStore from "@/store/index2.ts";
+import store from "@/store/index.ts";
 
 @Component({
   components: { NumberPad, Types, FromItem, Tags },
+  computed: {
+    count() {
+      return store.state.count;
+    },
+  },
 })
 export default class Money extends Vue {
-  tags = store.tagList;
-
-  recordList = store.recordList;
+  recordList = oldStore.recordList;
 
   record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
 
-  onUpdateTags(value: string[]) {
-    this.record.tags = value;
-  }
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
@@ -50,7 +50,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    store.createRecord(this.record)
+    oldStore.createRecord(this.record);
   }
 }
 </script>
@@ -61,7 +61,7 @@ export default class Money extends Vue {
   display: flex;
   flex-direction: column-reverse;
 }
-.notes{
+.notes {
   padding: 12px 0;
 }
 </style>

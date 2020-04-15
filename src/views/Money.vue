@@ -13,7 +13,6 @@
         />
       </div>
       <Tags />
-
     </Layout>
   </div>
 </template>
@@ -25,21 +24,23 @@ import Types from "@/components/Money/Types.vue";
 import FromItem from "@/components/Money/FromItem.vue";
 import Tags from "@/components/Money/Tags.vue";
 import { Component } from "vue-property-decorator";
-import oldStore from "@/store/index2.ts";
+
 import store from "@/store/index.ts";
 
 @Component({
   components: { NumberPad, Types, FromItem, Tags },
   computed: {
-    count() {
-      return store.state.count;
-    },
-  },
+    recoredList() {
+      return this.$store.state.recoredList;
+    }
+  }
 })
 export default class Money extends Vue {
-  recordList = oldStore.recordList;
-
   record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
+
+  created(){
+    this.$store.commit('fetchRecords')
+  }
 
   onUpdateNotes(value: string) {
     this.record.notes = value;
@@ -50,7 +51,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    oldStore.createRecord(this.record);
+    this.$store.commit("createRecord", this.record);
   }
 }
 </script>

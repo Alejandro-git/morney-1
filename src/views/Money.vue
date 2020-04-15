@@ -28,18 +28,17 @@ import { Component } from "vue-property-decorator";
 import store from "@/store/index.ts";
 
 @Component({
-  components: { NumberPad, Types, FromItem, Tags },
-  computed: {
-    recoredList() {
-      return this.$store.state.recoredList;
-    }
-  }
+  components: { NumberPad, Types, FromItem, Tags }
 })
 export default class Money extends Vue {
+  get recoredList() {
+    return this.$store.state.recoredList;
+  }
+
   record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
 
-  created(){
-    this.$store.commit('fetchRecords')
+  created() {
+    this.$store.commit("fetchRecords");
   }
 
   onUpdateNotes(value: string) {

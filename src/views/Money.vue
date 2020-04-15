@@ -23,7 +23,6 @@
 <script lang="ts">
 import Vue from "vue";
 import NumberPad from "@/components/Money/NumberPad.vue";
-import Types from "@/components/Money/Types.vue";
 import FromItem from "@/components/Money/FromItem.vue";
 import Tags from "@/components/Money/Tags.vue";
 import { Component } from "vue-property-decorator";
@@ -33,7 +32,7 @@ import recordTypeList from "@/constants/recordTypeList";
 import store from "@/store/index.ts";
 
 @Component({
-  components: { NumberPad, Types, FromItem, Tags, Tabs }
+  components: { NumberPad, FromItem, Tags, Tabs }
 })
 export default class Money extends Vue {
   get recoredList() {

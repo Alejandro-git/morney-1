@@ -3,10 +3,7 @@
     <Layout class-prefix="layout">
       <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
 
-    
-      <Tabs :data-source="recordTypeList" 
-            :value.sync="record.type"/>
-      
+      <Tabs :data-source="recordTypeList" :value.sync="record.type" />
 
       <div class="notes">
         <FromItem
@@ -62,7 +59,7 @@ export default class Money extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.layout-content {
+::v-deep .layout-content {
   //   border: 3px solid red;
   display: flex;
   flex-direction: column-reverse;

@@ -1,9 +1,16 @@
+
+type RootState = {
+  recordList: RecordItem[];
+  tagList: Tag[];
+  currentTag?: Tag;
+}
+
 type RecordItem = {
   tags: string[];
   notes: string;
   type: string;
   amount: number;
-  createdAt?: Date | undefined; //这是在记录数据库版本
+  createdAt?: string | undefined; //这是在记录数据库版本
 };
 
 

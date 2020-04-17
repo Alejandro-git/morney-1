@@ -23,7 +23,7 @@
         flex-direction: column;
         // min-height: 100vh;//最小高度100vh，也就是沾满可视高度
         // 考虑如果内容太多导航栏会出现在更下面，所以固定高度更合适height: 100vh；
-        height: 100vh;
+        min-height: 100vh;
     }
     .content{
         // border: 1px solid blue;

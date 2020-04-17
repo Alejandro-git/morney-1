@@ -11,9 +11,6 @@
           <span>{{ tag.name }}</span>
           <Icon name="right" />
         </router-link>
-        <!-- <li><span>食</span> <Icon name="right" /></li>
-        <li><span>住</span> <Icon name="right" /></li>
-        <li><span>行</span> <Icon name="right" /></li> -->
       </div>
 
       <div class="createTag-wrapper">
@@ -43,11 +40,19 @@ export default class Labels extends mixins(TagHelper) {
 
   createTag() {
     const name = window.prompt("请输入标签名");
-    if (!name) {
+    if (name != null) {
+      this.$store.commit("createTag", name);
+    } else if (name === "") {
       return window.alert("标签名不能为空");
     }
-    this.$store.commit("createTag", name);
   }
+  // createTag() {
+  //   const name = window.prompt("请输入标签名");
+  //   if (!name) {
+  //     return window.alert("标签名不能为空");
+  //   }
+  //   this.$store.commit("createTag", name);
+  // }
 }
 </script>
 
@@ -70,7 +75,7 @@ export default class Labels extends mixins(TagHelper) {
   }
 }
 .createTag {
-  background: #767676;
+  // background: #767676;
   color: white;
   border-radius: 4px;
   border: none;

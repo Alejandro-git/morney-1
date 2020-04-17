@@ -22,4 +22,11 @@ new Vue({
   router: router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+window.onload = function(){
+  setTimeout(function(){
+    window.scrollTo(0,200)
+  },0)
+};
+// 0秒后自动往上跳200px

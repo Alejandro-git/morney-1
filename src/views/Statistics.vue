@@ -12,9 +12,11 @@
       height="48px"
     /> -->
 
-    <ol>
+    <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
-        <h3 class="title">{{ beautify(group.title) }}<span>¥{{group.total}}</span></h3>
+        <h3 class="title">
+          {{ beautify(group.title) }}<span>¥{{ group.total }}</span>
+        </h3>
         <ol>
           <li v-for="item in group.items" :key="item.id" class="record">
             <span>{{ tagString(item.tags) }}</span>
@@ -24,6 +26,9 @@
         </ol>
       </li>
     </ol>
+    <div v-else class="noResult">
+      目前没有相关记录
+    </div>
   </Layout>
 </template>
 
@@ -41,7 +46,7 @@ import clone from "@/lib/clone";
 })
 export default class Statistics extends Vue {
   tagString(tags: Tag[]) {
-    return tags.length === 0 ? "无" : tags.join(",");
+    return tags.length === 0 ? "无" : tags.map(t=>t.name).join("，");
   }
 
   beautify(string: string) {
@@ -66,19 +71,17 @@ export default class Statistics extends Vue {
 
   get groupedList() {
     const { recordList } = this;
-    if (recordList.length === 0) {
+    
+    const newList = clone(recordList)
+      .filter(r => r.type === this.type)
+      .sort(
+        (a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf()
+      );
+    // console.log(newList.map(i=>i.createdAt));
+    if (newList.length === 0) {
       return [];
     }
-
-    type HashTableValue = { title: string; items: RecordItem[] };
-
-    const newList = clone(recordList)
-    .filter(r=>r.type===this.type)
-    .sort(
-      (a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf()
-    );
-    // console.log(newList.map(i=>i.createdAt));
-    type Result = {title: string; total?: number; items: RecordItem[]}[];
+    type Result = { title: string; total?: number; items: RecordItem[] }[];
     const result: Result = [
       {
         title: dayjs(newList[0].createdAt).format("YYYY-MM-DD"),
@@ -98,9 +101,9 @@ export default class Statistics extends Vue {
       }
     }
 
-    result.map(group=>{
-        group.total = group.items.reduce((sum,item)=>sum+item.amount,0);
-    })
+    result.map(group => {
+      group.total = group.items.reduce((sum, item) => sum + item.amount, 0);
+    });
     return result;
   }
 
@@ -116,6 +119,10 @@ export default class Statistics extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.noResult{
+  padding:16px;
+  text-align: center;
+}
 ::v-deep {
   .type-tabs-item {
     background: #c4c4c4;

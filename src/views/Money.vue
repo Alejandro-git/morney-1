@@ -8,11 +8,12 @@
       <div class="notes">
         <FromItem
           field-name="备注"
-          @update:value="onUpdateNotes"
           placeholder="在这里输入备注"
+          :value.sync="record.notes"
+          
         />
       </div>
-      <Tags />
+      <Tags @update:value="record.tags = $event" />
     </Layout>
   </div>
 </template>
@@ -29,7 +30,7 @@ import recordTypeList from "@/constants/recordTypeList";
 import store from "@/store/index.ts";
 
 @Component({
-  components: { NumberPad, FromItem, Tags, Tabs }
+  components: { NumberPad, FromItem, Tags, Tabs },
 })
 export default class Money extends Vue {
   get recoredList() {
@@ -53,7 +54,14 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
+    if(!this.record.tags || this.record.tags.length===0){
+      return window.alert("请至少选择一个标签");
+    }
     this.$store.commit("createRecord", this.record);
+    if (this.$store.state.createRecordError === null) {
+      window.alert("已保存");
+      this.record.notes = '';
+    }
   }
 }
 </script>
